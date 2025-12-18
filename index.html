@@ -25,39 +25,49 @@
             background-position: 0 0, 20px 20px;
             color: var(--text-dark); 
             font-family: 'Permanent Marker', cursive;
-            display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; padding: 15px; 
+            display: flex; flex-direction: column; align-items: center; 
+            height: 100vh; 
+            overflow: hidden; 
+            padding: 10px; 
         }
         
         /* TYPOGRAPHY */
         h1, h2, .title-font { font-family: 'Bangers', cursive; letter-spacing: 1.5px; text-transform: uppercase; }
-        h1 { font-size: 3rem; margin-top: 10px; color: var(--lime-green); -webkit-text-stroke: 1.5px var(--text-dark); text-shadow: 3px 3px 0 #000; }
-        h2 { font-size: 2rem; color: var(--text-dark); }
+        h1 { font-size: 3rem; margin-top: 5px; color: var(--lime-green); -webkit-text-stroke: 1.5px var(--text-dark); text-shadow: 3px 3px 0 #000; line-height: 1; }
+        h2 { font-size: 1.8rem; color: var(--text-dark); }
         
         .green-text { color: var(--lime-green); -webkit-text-stroke: 1px var(--text-dark); }
         .orange-text { color: var(--tangerine-orange); -webkit-text-stroke: 1px var(--text-dark); }
 
-        /* CONTAINERS */
-        .screen { display: none; width: 100%; max-width: 500px; flex-direction: column; align-items: center; z-index: 2; position: relative; }
+        /* CONTAINERS - SCROLL FIX */
+        .screen { 
+            display: none; width: 100%; max-width: 500px; height: 100%;
+            flex-direction: column; align-items: center; z-index: 2; position: relative;
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding-bottom: 50px; 
+        }
         .screen.active { display: flex; }
-        .box { background: var(--white); padding: 25px; border-radius: 20px; width: 100%; margin: 15px 0; border: 4px solid var(--text-dark); box-shadow: 5px 5px 0 rgba(0,0,0,0.1); }
+        
+        .box { background: var(--white); padding: 20px; border-radius: 20px; width: 100%; margin: 15px 0; border: 4px solid var(--text-dark); box-shadow: 5px 5px 0 rgba(0,0,0,0.1); }
 
         /* INPUTS & BUTTONS */
         input { 
-            background: var(--bg-color); border: 3px solid var(--text-dark); border-radius: 15px; padding: 15px; width: 90%; 
-            font-family: 'Permanent Marker', cursive; font-size: 1.3rem; text-align: center; margin: 10px 0; outline: none; color: var(--text-dark); 
+            background: var(--bg-color); border: 3px solid var(--text-dark); border-radius: 15px; padding: 12px; width: 90%; 
+            font-family: 'Permanent Marker', cursive; font-size: 1.2rem; text-align: center; margin: 8px 0; outline: none; color: var(--text-dark); 
         }
         .btn { 
-            border: 4px solid var(--text-dark); padding: 15px 30px; border-radius: 50px; font-family: 'Bangers', cursive; 
-            font-size: 1.6rem; cursor: pointer; margin: 10px; width: 90%; transition: all 0.1s; color: var(--text-dark); 
+            border: 4px solid var(--text-dark); padding: 12px 30px; border-radius: 50px; font-family: 'Bangers', cursive; 
+            font-size: 1.5rem; cursor: pointer; margin: 10px; width: 90%; transition: all 0.1s; color: var(--text-dark); 
             box-shadow: 4px 4px 0 var(--text-dark);
         }
         .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--text-dark); }
         .btn-green { background: var(--lime-green); color: var(--white); -webkit-text-stroke: 1px var(--text-dark); }
         .btn-orange { background: var(--tangerine-orange); color: var(--white); -webkit-text-stroke: 1px var(--text-dark); }
+        .btn-small { font-size: 1rem; padding: 8px 15px; width: auto; margin-top: 5px; }
         
         /* TEAM INDICATOR TILE */
         .team-card { 
-            padding: 12px 24px; border-radius: 12px; font-family: 'Bangers', cursive; font-size: 1.2rem; 
+            padding: 10px 20px; border-radius: 12px; font-family: 'Bangers', cursive; font-size: 1.1rem; 
             text-transform: uppercase; border: 4px solid var(--text-dark); display: inline-block; 
             box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
         }
@@ -65,13 +75,13 @@
         .is-orange { background: var(--tangerine-orange); color: var(--white); -webkit-text-stroke: 1px var(--text-dark); }
 
         /* HEADER INFO */
-        .game-header { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .card-counter { font-family: 'Bangers'; font-size: 1.2rem; background: var(--text-dark); color: white; padding: 5px 15px; border-radius: 15px; }
+        .game-header { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-shrink: 0; }
+        .card-counter { font-family: 'Bangers'; font-size: 1.1rem; background: var(--text-dark); color: white; padding: 5px 15px; border-radius: 15px; }
 
         /* CARDS */
-        .question-card-container { width: 100%; margin: 10px 0; perspective: 1000px; }
+        .question-card-container { width: 100%; margin: 5px 0; perspective: 1000px; flex-shrink: 0; }
         .question-card {
-            width: 100%; border-radius: 25px; padding: 25px 20px; border: 5px solid var(--text-dark);
+            width: 100%; border-radius: 25px; padding: 20px; border: 5px solid var(--text-dark);
             box-shadow: 8px 8px 0 rgba(0,0,0,0.15); display: flex; flex-direction: column; align-items: center;
         }
         .card-purple { 
@@ -85,16 +95,16 @@
             background-size: 30px 30px;
         }
         .card-title {
-            font-family: 'Bangers', cursive; font-size: 1.8rem; margin-bottom: 15px;
+            font-family: 'Bangers', cursive; font-size: 1.5rem; margin-bottom: 10px;
             background: var(--white); color: var(--text-dark); padding: 5px 20px;
             border-radius: 20px; border: 3px solid var(--text-dark); transform: rotate(-2deg);
         }
-        .question-text { font-size: 2rem; margin: 20px 0; line-height: 1.1; text-align: center; text-shadow: 2px 2px 0 rgba(0,0,0,0.2); }
+        .question-text { font-size: 1.6rem; margin: 15px 0; line-height: 1.1; text-align: center; text-shadow: 2px 2px 0 rgba(0,0,0,0.2); }
         
-        .options-container { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+        .options-container { width: 100%; display: flex; flex-direction: column; gap: 8px; }
         .option-btn { 
-            background: var(--white); color: var(--text-dark); padding: 15px; border-radius: 15px; 
-            font-size: 1.5rem; cursor: pointer; border: 4px solid var(--text-dark); width: 100%;
+            background: var(--white); color: var(--text-dark); padding: 12px; border-radius: 15px; 
+            font-size: 1.3rem; cursor: pointer; border: 4px solid var(--text-dark); width: 100%;
             text-align: center; transition: all 0.1s; box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
         }
         .option-btn.selected { 
@@ -103,16 +113,32 @@
         }
 
         /* TIMER */
-        .timer-bar { height: 12px; background: var(--white); border: 3px solid var(--text-dark); width: 100%; border-radius: 10px; overflow: hidden; }
+        .timer-bar { height: 12px; background: var(--white); border: 3px solid var(--text-dark); width: 100%; border-radius: 10px; overflow: hidden; flex-shrink: 0; }
         .timer-fill { height: 100%; background: var(--lime-green); width: 100%; transition: width 1s linear; }
 
         /* RESULTS */
-        .result-row { display: flex; justify-content: space-between; width: 100%; padding: 12px; background: var(--white); margin: 8px 0; border-radius: 12px; align-items: center; border: 3px solid var(--text-dark); }
-        .score-pill { font-family: 'Bangers', cursive; font-size: 1.2rem; padding: 5px 15px; border-radius: 20px; background: var(--text-dark); color: var(--white); min-width: 40px; text-align: center; }
+        .result-row { display: flex; justify-content: space-between; width: 100%; padding: 10px; background: var(--white); margin: 6px 0; border-radius: 12px; align-items: center; border: 3px solid var(--text-dark); }
+        .score-pill { font-family: 'Bangers', cursive; font-size: 1.2rem; padding: 5px 12px; border-radius: 20px; background: var(--text-dark); color: var(--white); min-width: 40px; text-align: center; }
         .winner-highlight { border-color: var(--lime-green); background: #f0ffe0; }
 
         /* CONFETTI CANVAS */
         #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 99; }
+
+        /* MOBILE FIXES */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.4rem; }
+            .question-text { font-size: 1.4rem; }
+            .option-btn { font-size: 1.1rem; padding: 10px; }
+            
+            /* Rules Text Fix */
+            .rules-text { font-size: 0.9rem !important; }
+            .rules-title { font-size: 1.1rem !important; }
+            
+            /* Celebration Screen Fix */
+            #winner-name { font-size: 2.5rem !important; } 
+            #s-game-over h1 { font-size: 3rem !important; }
+        }
 
     </style>
 </head>
@@ -138,27 +164,33 @@
             <input type="text" id="join-name-player" placeholder="YOUR NAME" maxlength="10">
             <button class="btn btn-orange" onclick="joinGame()">JOIN GAME</button>
         </div>
+        <p style="text-align:center; font-size:0.9rem;">4 Unique Rounds. No Repeats!</p>
     </div>
 
     <div id="s-host-lobby" class="screen">
         <div class="box" style="text-align: center;">
             <h2>ROOM CODE:</h2>
-            <div id="lobby-code" style="font-family: 'Bangers'; font-size: 4rem; color: var(--lime-green); -webkit-text-stroke: 2px var(--text-dark); margin: 5px 0;"></div>
+            <div id="lobby-code" style="font-family: 'Bangers'; font-size: 3.5rem; color: var(--lime-green); -webkit-text-stroke: 2px var(--text-dark); margin: 5px 0;"></div>
+            
+            <button class="btn btn-orange btn-small" onclick="resetDeckHistory()">RESET DECK HISTORY</button>
         </div>
-        <div id="host-rules-container" style="width: 100%;"></div> <div class="box">
-            <h2 class="title-font" style="text-align: center; font-size: 1.5rem;">PLAYERS JOINED:</h2>
-            <div id="host-player-list" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; width: 100%; margin-top: 15px;"></div>
+        
+        <div id="host-rules-container" style="width: 100%;"></div> 
+        <div class="box">
+            <h2 class="title-font" style="text-align: center; font-size: 1.4rem;">PLAYERS JOINED:</h2>
+            <div id="host-player-list" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; width: 100%; margin-top: 10px;"></div>
         </div>
         <button class="btn btn-green" onclick="hostStartGame()">START GAME</button>
     </div>
 
-    <div id="s-player-wait" class="screen" style="justify-content: center;">
+    <div id="s-player-wait" class="screen">
         <div class="box" style="text-align: center;">
             <h2>YOU ARE ON</h2>
-            <div id="my-team-display" class="team-card is-orange" style="font-size: 2rem; margin: 15px 0;">TEAM ORANGE</div>
-            <p class="wait-text" style="font-size: 1.2rem;">Waiting for Host to Start...</p>
+            <div id="my-team-display" class="team-card is-orange" style="font-size: 1.8rem; margin: 15px 0;">TEAM ORANGE</div>
+            <p class="wait-text" style="font-size: 1.1rem;">Waiting for Host to Start...</p>
         </div>
-        <div id="player-rules-container" style="width: 100%;"></div> </div>
+        <div id="player-rules-container" style="width: 100%;"></div> 
+    </div>
 
     <div id="s-game" class="screen">
         <div class="game-header">
@@ -180,15 +212,15 @@
     <div id="s-results" class="screen">
         <div class="box" style="text-align: center; border-color: var(--lime-green);">
             <h2 style="font-family: 'Bangers'; color: var(--lime-green);">ROUND OVER!</h2>
-            <div style="font-size: 1.1rem; margin-bottom: 5px;">The majority voted for:</div>
-            <div id="winning-answer-text" style="font-size: 2.2rem; line-height: 1; color: var(--text-dark); margin-bottom: 15px;"></div>
-            <div id="result-message" style="font-size: 1.3rem; font-weight: bold; padding: 15px; background: var(--bg-color); border-radius: 10px; border: 3px solid var(--text-dark);"></div>
+            <div style="font-size: 1rem; margin-bottom: 5px;">The majority voted for:</div>
+            <div id="winning-answer-text" style="font-size: 2rem; line-height: 1; color: var(--text-dark); margin-bottom: 15px;"></div>
+            <div id="result-message" style="font-size: 1.2rem; font-weight: bold; padding: 15px; background: var(--bg-color); border-radius: 10px; border: 3px solid var(--text-dark);"></div>
         </div>
         <div id="score-breakdown" style="width: 100%;"></div>
     </div>
 
     <div id="s-game-over" class="screen">
-        <h1 style="font-size: 4rem; color: var(--lime-green);">WINNER!</h1>
+        <h1 style="font-size: 3.5rem; color: var(--lime-green);">WINNER!</h1>
         <div class="box" style="text-align: center; border: 6px solid var(--lime-green); box-shadow: 0 0 20px var(--lime-green);">
             <div id="winner-name" style="font-family: 'Bangers'; font-size: 3.5rem; color: var(--text-dark);">PLAYER 1</div>
             <div style="font-size: 1.5rem;">Total Score: <span id="winner-score" style="font-weight:bold;">0</span></div>
@@ -224,45 +256,42 @@
         let hostTimer = null;
         let totalQuestions = 15;
         
-        // HTML for the Rules Section
+        // Rules HTML
         const rulesHTML = `
-            <div class="box" style="text-align: left; border-color: var(--card-purple);">
-                <h2 class="title-font" style="color: var(--card-purple); text-align: center; font-size: 1.8rem;">GAME RULES</h2>
-                <ul style="list-style: none; padding: 0; font-size: 1.1rem;">
-                    <li style="margin-bottom: 12px;">
-                        <span class="title-font" style="color: var(--lime-green); font-size: 1.3rem;">1. THINK LIKE THE MAJORITY:</span><br>
+            <div class="box" style="text-align: left; border-color: var(--card-purple); padding: 15px;">
+                <h2 class="title-font" style="color: var(--card-purple); text-align: center; font-size: 1.5rem;">GAME RULES</h2>
+                <ul style="list-style: none; padding: 0; font-size: 1rem;" class="rules-text">
+                    <li style="margin-bottom: 10px;">
+                        <span class="title-font rules-title" style="color: var(--lime-green); font-size: 1.2rem;">1. THINK LIKE THE MAJORITY:</span><br>
                         Answer with what you think the most people will choose.
                     </li>
-                    <li style="margin-bottom: 12px;">
-                        <span class="title-font" style="color: var(--tangerine-orange); font-size: 1.3rem;">2. JOIN THE GREEN TEAM:</span><br>
+                    <li style="margin-bottom: 10px;">
+                        <span class="title-font rules-title" style="color: var(--tangerine-orange); font-size: 1.2rem;">2. JOIN THE GREEN TEAM:</span><br>
                         Match the majority to get on the <span class="green-text title-font">GREEN TEAM</span>.
                     </li>
-                    <li style="margin-bottom: 15px;">
-                        <span class="title-font" style="color: var(--card-teal); font-size: 1.3rem;">3. SCORE POINTS:</span>
-                        <div style="margin-left: 15px; margin-top: 8px; font-family: 'Bangers'; font-size: 1.2rem;">
-                            <div style="margin-bottom: 8px; padding: 5px; background: rgba(255,255,255,0.5); border-radius: 8px;">
-                                FROM ORANGE <span style="font-family: 'Permanent Marker'">→</span> GREEN: <span class="green-text" style="font-size: 1.4rem;">+1 POINT</span>
+                    <li style="margin-bottom: 12px;">
+                        <span class="title-font rules-title" style="color: var(--card-teal); font-size: 1.2rem;">3. SCORE POINTS:</span>
+                        <div style="margin-left: 10px; margin-top: 5px; font-family: 'Bangers'; font-size: 1.1rem;">
+                            <div style="margin-bottom: 5px; padding: 4px; background: rgba(255,255,255,0.5); border-radius: 8px;">
+                                ORANGE <span style="font-family: 'Permanent Marker'">→</span> GREEN: <span class="green-text">+1 POINT</span>
                             </div>
-                            <div style="margin-bottom: 8px; padding: 5px; background: rgba(255,255,255,0.5); border-radius: 8px;">
-                                STAY ON GREEN: <span class="green-text" style="font-size: 1.6rem;">+2 POINTS</span>
+                            <div style="margin-bottom: 5px; padding: 4px; background: rgba(255,255,255,0.5); border-radius: 8px;">
+                                STAY GREEN: <span class="green-text">+2 POINTS</span>
                             </div>
-                            <div style="padding: 5px; background: rgba(255,255,255,0.5); border-radius: 8px;">
-                                FROM GREEN <span style="font-family: 'Permanent Marker'">→</span> ORANGE: <span class="orange-text" style="font-size: 1.4rem;">0 POINTS</span>
+                            <div style="padding: 4px; background: rgba(255,255,255,0.5); border-radius: 8px;">
+                                GREEN <span style="font-family: 'Permanent Marker'">→</span> ORANGE: <span class="orange-text">0 POINTS</span>
                             </div>
                         </div>
-                    </li>
-                    <li>
-                        <span class="title-font" style="color: var(--text-dark); font-size: 1.3rem;">4. WIN:</span><br>
-                        Highest score after 15 rounds wins!
                     </li>
                 </ul>
             </div>
         `;
 
-        const allQuestions = [
+        // --- QUESTION BANK (Your 60 Questions) ---
+        const binaryQuestions = [
+            // --- CLASSIC ---
             { t: "Pancakes or Waffles?", o: ["Pancakes", "Waffles"] },
             { t: "Cats or Dogs?", o: ["Cats", "Dogs"] },
-            { t: "Coffee or Tea?", o: ["Coffee", "Tea"] },
             { t: "Morning or Night?", o: ["Morning", "Night"] },
             { t: "Summer or Winter?", o: ["Summer", "Winter"] },
             { t: "Rich or Famous?", o: ["Rich", "Famous"] },
@@ -275,22 +304,75 @@
             { t: "Call or Text?", o: ["Call", "Text"] },
             { t: "Passenger or Driver?", o: ["Passenger", "Driver"] },
             { t: "Online or In-Store?", o: ["Online", "In-Store"] },
-            { t: "Best Pet?", o: ["Dog", "Cat", "Hamster"] },
+            // --- DESI / SOUTH INDIAN ---
+            { t: "Sambhar Style?", o: ["Sweet (Udupi)", "Spicy (Tamil/Andhra)"] },
+            { t: "Coffee Preference?", o: ["Filter Coffee", "Instant"] },
+            { t: "Best Accompaniment?", o: ["Coconut Chutney", "Tomato Chutney"] },
+            { t: "Movie Release Day?", o: ["First Day First Show", "Wait for Reviews"] },
+            { t: "Upma is...", o: ["Comfort food", "Concrete mix (Hate it)"] },
+            { t: "The Real Thala?", o: ["Rajinikanth", "Dhoni (CSK)"] },
+            { t: "Best Music Director?", o: ["A.R. Rahman", "Ilaiyaraaja"] },
+            { t: "Best Director?", o: ["S.S. Rajamouli", "Mani Ratnam"] },
+            { t: "Nani is best at...", o: ["Comedy", "Emotional Roles"] },
+            // --- HYPOTHETICALS ---
+            { t: "Alarm Clock Style?", o: ["Get up instantly", "Snooze 5 times"] },
+            { t: "Time Travel?", o: ["Go to Past", "Go to Future"] },
+            { t: "If you could only eat one?", o: ["Sweet", "Spicy"] },
+            { t: "Best way to eat an apple?", o: ["Bite it", "Slices"] },
+            { t: "Live without...", o: ["Music", "Movies/TV"] },
+            { t: "You see a ghost...", o: ["Run", "Talk to it"] },
+            { t: "Know date of death OR cause?", o: ["Date", "Cause"] }
+        ];
+
+        const trinaryQuestions = [
+            // --- CLASSIC ---
             { t: "Best Superpower?", o: ["Flight", "Invisibility", "Strength"] },
             { t: "Worst Chore?", o: ["Dishes", "Laundry", "Vacuuming"] },
             { t: "Best Fast Food?", o: ["McDonalds", "KFC", "Burger King"] },
             { t: "Scariest Animal?", o: ["Snake", "Spider", "Shark"] },
             { t: "Best Pizza Topping?", o: ["Pepperoni", "Cheese", "Pineapple"] },
             { t: "Best Vacation?", o: ["Beach", "City", "Camping"] },
-            { t: "Best Color?", o: ["Blue", "Red", "Green"] },
-            { t: "Best Ice Cream?", o: ["Vanilla", "Chocolate", "Strawberry"] },
             { t: "Best Movie Genre?", o: ["Action", "Comedy", "Horror"] },
             { t: "Most annoying sound?", o: ["Chewing", "Crying Baby", "Alarm Clock"] },
-            { t: "Best School Subject?", o: ["Math", "History", "Science"] },
-            { t: "Best Fruit?", o: ["Apple", "Banana", "Orange"] },
             { t: "Worst place to sleep?", o: ["Floor", "Car", "Chair"] },
-            { t: "Best Weekend Activity?", o: ["Sleeping", "Partying", "Gaming"] }
+            { t: "Best Weekend Activity?", o: ["Sleeping", "Partying", "Gaming"] },
+            // --- DESI / SOUTH INDIAN ---
+            { t: "The Ultimate Breakfast?", o: ["Idli & Vada", "Dosa", "Puri & Sagoo"] },
+            { t: "Malayalam Movies are...", o: ["Masterpieces", "Too slow", "Confusing"] },
+            { t: "Cinema Snacks?", o: ["Popcorn", "Samosa/Puffs", "Nachos"] },
+            { t: "Best Pan-India Movie?", o: ["Baahubali", "KGF", "RRR"] },
+            { t: "Bangalore is famous for...", o: ["Weather", "Traffic Jams", "Startups"] },
+            { t: "Hyderabad is famous for...", o: ["Biryani", "Haleem", "Tollywood"] },
+            { t: "Chennai is famous for...", o: ["Humidity/Heat", "Beaches", "Temples"] },
+            { t: "Kerala is famous for...", o: ["Backwaters", "Strikes (Hartal)", "Food"] },
+            { t: "Best Weekend Getaway?", o: ["Ooty/Kodai", "Coorg/Chikmagalur", "Pondicherry/Goa"] },
+            { t: "Meaning of 'I'm reaching in 5 mins'?", o: ["5 mins", "20 mins", "Haven't left home"] },
+            { t: "Irani Chai must be had with?", o: ["Osmania Biscuit", "Samosa", "Bun Maska"] },
+            { t: "Best Childhood Cartoon?", o: ["Tom & Jerry", "Doraemon", "Shinchan"] },
+            { t: "Best Candy?", o: ["Melody", "Mango Bite", "Pulse"] },
+            { t: "Honeymoon Destination?", o: ["Maldives", "Europe", "Bali"] },
+            // --- HYPOTHETICALS ---
+            { t: "Zombies attack! Weapon?", o: ["Baseball Bat", "Gun", "Sword"] },
+            { t: "Reading subtitles?", o: ["Always On", "Only foreign films", "Never"] },
+            { t: "Sleeping with the door...", o: ["Open", "Closed", "Locked"] },
+            { t: "Podcast or Music?", o: ["Podcast", "Music", "Silence"] },
+            { t: "Best brain time?", o: ["Early Morning", "Late Night", "Never"] },
+            { t: "Pizza Crust?", o: ["Eat it", "Leave it", "Dip it"] }
         ];
+
+        // Combine and Assign IDs dynamically (1 to 60)
+        const allQuestions = [...binaryQuestions, ...trinaryQuestions].map((q, index) => ({
+            ...q,
+            id: index + 1
+        }));
+
+        // NEW: MANUAL RESET FUNCTION
+        window.resetDeckHistory = () => {
+            if(confirm("Are you sure? This will reset the card memory for a fresh game.")) {
+                localStorage.removeItem('gtw_seen_ids');
+                alert("Deck Reset! All cards are available again.");
+            }
+        };
 
         // --- HOST FUNCTIONS ---
         window.createGame = async () => {
@@ -299,36 +381,49 @@
 
             roomCode = Math.random().toString(36).substring(2, 6).toUpperCase();
             isHost = true;
-            const shuffled = allQuestions.sort(() => 0.5 - Math.random());
-            const selectedQuestions = shuffled.slice(0, 15);
             
-            // Host is created as a player immediately
+            // --- NON-REPEAT LOGIC (Smart Memory) ---
+            let seenIDs = JSON.parse(localStorage.getItem('gtw_seen_ids') || '[]');
+            
+            // Filter out already seen questions
+            let availableQuestions = allQuestions.filter(q => !seenIDs.includes(q.id));
+            
+            // If we don't have enough for a full game (15), Reset History
+            if (availableQuestions.length < 15) {
+                seenIDs = [];
+                availableQuestions = [...allQuestions];
+                // alert("Cycle Complete! Reshuffling Deck."); // Optional alert
+            }
+
+            // Shuffle
+            availableQuestions.sort(() => Math.random() - 0.5);
+            
+            // Pick 15
+            const selectedQuestions = availableQuestions.slice(0, 15);
+            
+            // Save new IDs to history
+            const newSeenIDs = [...seenIDs, ...selectedQuestions.map(q => q.id)];
+            localStorage.setItem('gtw_seen_ids', JSON.stringify(newSeenIDs));
+            // ------------------------
+
             await set(ref(db, 'rooms/' + roomCode), {
                 state: 'LOBBY', 
                 questions: selectedQuestions, 
                 currentQIndex: -1, 
                 players: {
-                    [myName]: {
-                        score: 0,
-                        team: 'ORANGE',
-                        answer: -1
-                    }
+                    [myName]: { score: 0, team: 'ORANGE', answer: -1 }
                 }
             });
             document.getElementById('lobby-code').innerText = roomCode;
-            
-            // Inject Rules
             document.getElementById('host-rules-container').innerHTML = rulesHTML;
             switchScreen('s-host-lobby');
             
-            // Host listens for other players joining
             onValue(ref(db, 'rooms/' + roomCode + '/players'), (snap) => {
                 const p = snap.val() || {};
                 document.getElementById('host-player-list').innerHTML = 
-                    Object.keys(p).map(k => `<div class="team-card is-orange" style="font-size: 1rem; padding: 8px 15px;">${k}</div>`).join('');
+                    Object.keys(p).map(k => `<div class="team-card is-orange" style="font-size: 0.9rem; padding: 6px 12px;">${k}</div>`).join('');
             });
 
-            // Host also needs to listen to game loop to play
             gameLoopListener(ref(db, 'rooms/' + roomCode));
         };
 
@@ -339,13 +434,11 @@
 
         function nextQuestion(index) {
             if(index >= 15) return endGame();
-            
             update(ref(db, 'rooms/' + roomCode), {
                 state: 'QUESTION', currentQIndex: index, startTime: Date.now()
             });
 
             startCheckingAnswers(index);
-
             if(hostTimer) clearTimeout(hostTimer);
             hostTimer = setTimeout(() => calculateResults(index), 15000);
         }
@@ -380,7 +473,6 @@
 
             const players = data.players || {};
             const question = data.questions[qIndex];
-
             let votes = new Array(question.o.length).fill(0);
             Object.values(players).forEach(p => { if(p.answer !== undefined && p.answer !== -1) votes[p.answer]++; });
 
@@ -410,7 +502,6 @@
                     } else { newTeam = "ORANGE"; pointsAdded = 0; }
                 }
                 
-                // Store previous team for results display
                 updates['players/' + name + '/previousTeam'] = currentTeam;
                 updates['players/' + name + '/score'] = (p.score || 0) + pointsAdded;
                 updates['players/' + name + '/team'] = newTeam;
@@ -447,11 +538,8 @@
             if(!snap.exists()) return alert("Room not found");
             
             await update(ref(db, 'rooms/' + roomCode + '/players/' + myName), { score: 0, team: 'ORANGE', answer: -1 });
-            
-            // Inject Rules
             document.getElementById('player-rules-container').innerHTML = rulesHTML;
             switchScreen('s-player-wait');
-            
             gameLoopListener(roomRef);
         };
 
@@ -490,7 +578,13 @@
                 btn.onclick = () => {
                     document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
                     btn.classList.add('selected');
-                    document.getElementById('timer').style.width = document.getElementById('timer').offsetWidth + 'px'; 
+                    // --- STOP TIMER ANIMATION (FROZEN VISUAL) ---
+                    const timerBar = document.getElementById('timer');
+                    const computedStyle = window.getComputedStyle(timerBar);
+                    const currentWidth = computedStyle.getPropertyValue('width');
+                    timerBar.style.transition = 'none';
+                    timerBar.style.width = currentWidth;
+                    // --------------------------------------------
                     update(ref(db, 'rooms/' + roomCode + '/players/' + myName), { answer: i });
                 };
                 area.appendChild(btn);
@@ -515,7 +609,6 @@
                     message = `MOVED TO TEAM GREEN! <span class="green-text" style="font-family:'Bangers'; font-size:1.5rem;">+1 POINT!</span>`;
                 }
             } else {
-                // Currently ORANGE
                 if (myData.previousTeam === 'GREEN') {
                      message = `MOVED TO TEAM ORANGE. <span class="orange-text" style="font-family:'Bangers'; font-size:1.5rem;">0 POINTS.</span>`;
                 } else {
