@@ -106,15 +106,13 @@
             background: var(--white); color: var(--text-dark); padding: 12px; border-radius: 15px; 
             font-size: 1.3rem; cursor: pointer; border: 4px solid var(--text-dark); width: 100%;
             text-align: center; transition: all 0.1s; box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
-            position: relative; /* For locking visual */
+            position: relative;
         }
         .option-btn.selected { 
             background: var(--lime-green); color: var(--white); border-color: var(--text-dark);
             box-shadow: inset 0 0 0 3px var(--white); transform: scale(0.98);
         }
-        .option-btn.disabled {
-            opacity: 0.6; pointer-events: none;
-        }
+        .option-btn.disabled { opacity: 0.6; pointer-events: none; }
 
         /* TIMER */
         .timer-bar { height: 12px; background: var(--white); border: 3px solid var(--text-dark); width: 100%; border-radius: 10px; overflow: hidden; flex-shrink: 0; }
@@ -254,6 +252,7 @@
         let myTeam = "ORANGE";
         let hostTimer = null;
         let totalQuestions = 15;
+        let lastRenderedIndex = -1; // --- FIX FOR RE-RENDERING BUG ---
         
         // Rules HTML
         const rulesHTML = `
@@ -310,6 +309,7 @@
             { t: "The Real Thala?", o: ["Rajinikanth", "Dhoni (CSK)"] },
             { t: "Best Music Director?", o: ["A.R. Rahman", "Ilaiyaraaja"] },
             { t: "Best Director?", o: ["S.S. Rajamouli", "Mani Ratnam"] },
+            { t: "Nani is best at...", o: ["Comedy", "Emotional Roles"] },
             { t: "Alarm Clock Style?", o: ["Get up instantly", "Snooze 5 times"] },
             { t: "Time Travel?", o: ["Go to Past", "Go to Future"] },
             { t: "If you could only eat one?", o: ["Sweet", "Spicy"] },
@@ -535,8 +535,12 @@
                 }
 
                 if(data.state === 'QUESTION') { 
-                    document.getElementById('card-count-display').innerText = (data.currentQIndex + 1);
-                    showQuestion(data.questions[data.currentQIndex]); 
+                    // --- FIX FOR RE-RENDERING UNLOCKING BUG ---
+                    if (data.currentQIndex !== lastRenderedIndex) {
+                        lastRenderedIndex = data.currentQIndex;
+                        document.getElementById('card-count-display').innerText = (data.currentQIndex + 1);
+                        showQuestion(data.questions[data.currentQIndex]); 
+                    }
                 }
                 else if(data.state === 'RESULTS') { showResults(data); }
                 else if(data.state === 'GAME_OVER') { showGameOver(data); }
